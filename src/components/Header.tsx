@@ -1,6 +1,5 @@
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
-import zIndex from "@mui/material/styles/zIndex";
 import Typography from "@mui/material/Typography";
 
 export default function Header(props: {
@@ -25,12 +24,11 @@ export default function Header(props: {
         overflow: "hidden",
         width: props.width,
         height: props.height,
-        maxWidth: 1,
-        zIndex: 0
+        maxWidth: 1
       }}
       style={{ filter: "grayscale(100%)" }}
     >
-      <Typography variant="h1" sx={{ color: "white", width: 7 / 10 }} style={{ zIndex: 10 }}>
+      <Typography variant="h1" sx={{ color: "white", width: 7 / 10 }}>
         {props.title}
       </Typography>
     </Box>
