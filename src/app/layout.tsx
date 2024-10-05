@@ -33,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body style={{ margin: 0, padding: 0 }}>
+        <link rel="icon" type="image/jpg" href="./favicon.ico" />
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <Components>{children}</Components>
