@@ -1,6 +1,9 @@
-import { CircularProgress, Typography } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import getPoezieTop10 from "@/database/api/getPoezieTop10";
 import Poezie from "@/database/models/Poezie";
+import GridContainer from "@/components/wrappers/GridContainer";
+import GridItem from "@/components/wrappers/GridItem";
+import ProductCard from "@/components/ProductCard";
 
 export default async function PoezieList() {
   const poezie: Poezie[] = await getPoezieTop10();
@@ -8,10 +11,12 @@ export default async function PoezieList() {
   return !poezie ? (
     <CircularProgress />
   ) : (
-    <ul>
-      {poezie.map((item, i) => (
-        <Typography key={item.id?.toString() ?? i.toString()}>{item.titel}</Typography>
+    <GridContainer sx={{ my: 4 }}>
+      {poezie.map((item) => (
+        <GridItem key={item._id?.toString()}>
+          <ProductCard product={item} />
+        </GridItem>
       ))}
-    </ul>
+    </GridContainer>
   );
 }

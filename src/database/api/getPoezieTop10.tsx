@@ -1,5 +1,4 @@
-import client from "@/database/connection/mongodb";
-
+import client from "@/database/connection/mongodbClient";
 
 export default async function getPoezieTop10() {
   try {

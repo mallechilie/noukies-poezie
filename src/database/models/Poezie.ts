@@ -6,6 +6,6 @@ export default class Poezie {
     public prijs: number,
     public omschrijving: string,
     public link: string,
-    public id?: ObjectId
+    public _id?: ObjectId
   ) {}
 }

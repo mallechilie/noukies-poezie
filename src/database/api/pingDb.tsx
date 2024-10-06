@@ -1,4 +1,4 @@
-import client from "@/database/connection/mongodb";
+import client from "@/database/connection/mongodbClient";
 
 export async function pingDb() {
   let isConnected = false;
@@ -13,4 +13,3 @@ export async function pingDb() {
     return isConnected;
   }
 }
-
