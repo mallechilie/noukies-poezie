@@ -2,6 +2,7 @@
 import { Box, Button, Card, CardContent, Link, Typography, useTheme } from "@mui/material";
 import Poezie from "@/database/models/Poezie";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 
 export default function ProductCard(props: { product: Poezie }) {
   const theme = useTheme();
@@ -39,7 +40,21 @@ export default function ProductCard(props: { product: Poezie }) {
           {props.product.omschrijving}
         </Typography>
 
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {props.product.prijs ? (
+            <Button
+              sx={{
+                color: theme.palette.secondary.contrastText,
+                textTransform: "none",
+                display: "flex"
+              }}
+            >
+              <EuroSymbolIcon fontSize="small" />
+              <Typography>{props.product.prijs}</Typography>
+            </Button>
+          ) : (
+            <Box></Box>
+          )}
           <Button
             sx={{
               color: theme.palette.secondary.contrastText,
