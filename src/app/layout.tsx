@@ -8,7 +8,7 @@ import theme from "@/theme";
 import { ThemeProvider } from "@mui/material/styles";
 
 export const metadata: Metadata = {
-  title: "Noukies poëzie",
+  title: "Nouks poëzie",
   description: "By Michiel Doorn"
 };
 
