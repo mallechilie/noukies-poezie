@@ -16,7 +16,7 @@ export default function ProductCard(props: { product: Poezie }) {
             borderRadius: 1,
             aspectRatio: 350 / 240,
             width: "100%",
-            backgroundImage: `url(https://picsum.photos/350/240)`,
+            backgroundImage: `url(${props.product.link})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             display: "flex",
