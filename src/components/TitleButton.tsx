@@ -15,7 +15,7 @@ export default function TitleButton() {
       href="/"
       sx={{ color: theme.palette.primary.contrastText, display: "block" }}
     >
-      <Typography variant="h6">NOUKIES POËZIE</Typography>
+      <Typography variant="h6">NOUKS POËZIE</Typography>
     </Button>
   );
 }

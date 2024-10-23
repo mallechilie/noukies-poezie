@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import TitleButton from "@/components/TitleButton";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
-import GridItem from "./wrappers/GridItem";
+import GridItem from "@/components/wrappers/GridItem";
 
 const pages = ["Algemene voorwaarden", "Privacy statement"];
 
