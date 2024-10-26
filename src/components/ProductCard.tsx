@@ -1,10 +1,11 @@
 "use client";
 import { Box, Button, Card, CardContent, Link, Typography, useTheme } from "@mui/material";
-import Poezie from "@/database/models/Poezie";
+import Product from "@/database/models/Product";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
+import Tag from "@/components/Tag";
 
-export default function ProductCard(props: { product: Poezie }) {
+export default function ProductCard(props: { product: Product }) {
   const theme = useTheme();
   return (
     <Card sx={{ backgroundColor: theme.palette.secondary.main }}>
@@ -22,7 +23,9 @@ export default function ProductCard(props: { product: Poezie }) {
             display: "flex",
             alignItems: "flex-end"
           }}
-        />
+        >
+          {props.product.productType ? <Tag productType={props.product.productType} /> : <></>}
+        </Box>
 
         <Typography variant="h5" component="div">
           {props.product.titel}

@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import PoezieList from "@/components/dbTesters/PoezieList";
+import ProductList from "@/components/dbTesters/ProductList";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
     <>
       <Header title="Nouks Poëzie" height={400} width={1440} />
       <ContentWidth>
-        <PoezieList/>
+        <ProductList />
       </ContentWidth>
     </>
   );

@@ -1,12 +1,12 @@
 import { CircularProgress } from "@mui/material";
-import getPoezieTop10 from "@/database/api/getPoezieTop10";
-import Poezie from "@/database/models/Poezie";
+import getProducts from "@/database/api/getProducts";
+import Product from "@/database/models/Product";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
 import ProductCard from "@/components/ProductCard";
 
-export default async function PoezieList() {
-  const poezie: Poezie[] = await getPoezieTop10();
+export default async function ProductList() {
+  const poezie: Product[] = await getProducts();
   console.log(poezie);
   return !poezie ? (
     <CircularProgress />

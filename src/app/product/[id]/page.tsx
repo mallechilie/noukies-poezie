@@ -1,13 +1,13 @@
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import getProductById from "@/database/api/getProductById";
-import Poezie from "@/database/models/Poezie";
+import Product from "@/database/models/Product";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const product: Poezie | undefined = await getProductById(params.id);
+  const product: Product | undefined = await getProductById(params.id);
   console.log(product);
   return (
     <ContentWidth>
@@ -32,12 +32,16 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h2">{product.titel}</Typography>
             <Typography variant="body1">{product.omschrijving}</Typography>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button sx={{ color: "black", textTransform: "none", display: "flex" }}>
-                <EuroSymbolIcon fontSize="small" />
-                <Typography>{product.prijs}</Typography>
-              </Button>
-            </Box>
+            {!product.prijs ? (
+              <></>
+            ) : (
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                <Button sx={{ color: "black", textTransform: "none", display: "flex" }}>
+                  <EuroSymbolIcon fontSize="small" />
+                  <Typography>{product.prijs}</Typography>
+                </Button>
+              </Box>
+            )}
           </Grid>
         </GridContainer>
       )}
