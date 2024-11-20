@@ -22,9 +22,9 @@ export default function Header(props: {
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
-        width: props.width,
+        width: 1,
         height: props.height,
-        maxWidth: 1
+        maxWidth: props.width
       }}
       style={{ filter: "grayscale(100%)" }}
     >
