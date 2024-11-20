@@ -7,7 +7,6 @@ export default async function getProductById(productId: string) {
     const product = await db
       .collection(process.env.COL_PRODUCTS ?? "")
       .findOne({ _id: new ObjectId(productId) });
-    console.log(product);
     return JSON.parse(JSON.stringify(product));
   } catch (e) {
     console.error(e);
