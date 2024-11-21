@@ -1,7 +1,11 @@
 import client from "@/database/connection/mongodbClient";
 
 export async function getDbInfo() {
-  const tested = { URI: false, database: false, collection: false };
+  const tested = {
+    URI: false,
+    database: false,
+    collections: { products: false, components: false }
+  };
   try {
     const mongoClient = await client.connect();
     await mongoClient.db(process.env.DB_NAME).command({ ping: 1 });
@@ -11,11 +15,17 @@ export async function getDbInfo() {
     const cols = await db.listCollections().toArray();
     tested.database = cols.length > 0;
 
-    const items = await db
+    const products = await db
       .collection(process.env.COL_PRODUCTS ?? "")
       .find()
       .toArray();
-    tested.collection = items.length > 0;
+    tested.collections.products = products.length > 0;
+
+    const components = await db
+      .collection(process.env.COL_COMPONENTS ?? "")
+      .find()
+      .toArray();
+    tested.collections.components = components.length > 0;
   } catch (e) {
     console.error(e);
   }
