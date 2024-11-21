@@ -6,12 +6,11 @@ import GridItem from "@/components/wrappers/GridItem";
 import ProductCard from "@/components/ProductCard";
 
 export default async function ProductList() {
-  const poezie: Product[] = await getProducts();
-  console.log(poezie);
-  if (poezie === undefined) {
+  const products: Product[] = await getProducts();
+  if (products === undefined) {
     return <CircularProgress />;
   }
-  if (poezie.length == 0) {
+  if (products.length == 0) {
     return (
       <>
         <Typography>No products found</Typography>
@@ -20,7 +19,7 @@ export default async function ProductList() {
   }
   return (
     <GridContainer sx={{ my: 4 }}>
-      {poezie.map((item) => (
+      {products.map((item) => (
         <GridItem key={item._id?.toString()}>
           <ProductCard product={item} />
         </GridItem>

@@ -4,20 +4,17 @@ import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export default  async function Header(props: {
-  sx?: SxProps;
-  width: number;
-  height: number;
-}) {
-  const headerData: ComponentData = await getComponentByName("header");
+export default async function Header(props: { sx?: SxProps; width: number; height: number }) {
+  const headerData: ComponentData | undefined = await getComponentByName("header");
   return (
     <Box
       sx={{
         ...props.sx,
-        backgroundImage: `url(${headerData.img_link})`,
+        backgroundImage: `url(${
+          headerData?.img_link ?? `https://picsum.photos/${props.width}/${props.height}`
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "gray",
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
@@ -31,7 +28,10 @@ export default  async function Header(props: {
       style={{ filter: "grayscale(100%)" }}
     >
       <Typography variant="h1" sx={{ color: "white", width: 7 / 10 }}>
-        {headerData.title}
+        {headerData?.title ?? "Nouks poezie"}
+      </Typography>
+      <Typography variant="h4" sx={{ color: "white", width: 7 / 10 }}>
+        {headerData?.subtitle ?? "Under construction..."}
       </Typography>
     </Box>
   );

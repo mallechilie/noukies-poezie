@@ -16,6 +16,6 @@ export default async function getComponentByName(name: string) {
     return JSON.parse(JSON.stringify(components[0]));
   } catch (e) {
     console.error(e);
-    return [];
+    return undefined;
   }
 }

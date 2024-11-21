@@ -8,7 +8,6 @@ import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const product: Product | undefined = await getProductById(params.id);
-  console.log(product);
   return (
     <ContentWidth>
       {!product ? (
