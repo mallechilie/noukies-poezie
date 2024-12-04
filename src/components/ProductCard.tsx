@@ -1,14 +1,13 @@
-"use client";
-import { Box, Button, Card, CardContent, Link, Typography, useTheme } from "@mui/material";
+import { Box, Button, Card, CardContent, Link, Typography } from "@mui/material";
 import Product from "@/database/models/Product";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import Tag from "@/components/Tag";
+import Globals from "@/globals";
 
 export default function ProductCard(props: { product: Product }) {
-  const theme = useTheme();
   return (
-    <Card sx={{ backgroundColor: theme.palette.secondary.main }}>
+    <Card sx={{ backgroundColor: Globals.theme.palette.secondary.main }}>
       <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
         <Box
           component={Link}
@@ -17,7 +16,7 @@ export default function ProductCard(props: { product: Product }) {
             borderRadius: 1,
             aspectRatio: 350 / 240,
             width: "100%",
-            backgroundImage: `url(${props.product.link})`,
+            backgroundImage: `url(${props.product.afbeeldingen[0].link})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             display: "flex",
@@ -47,7 +46,7 @@ export default function ProductCard(props: { product: Product }) {
           {props.product.prijs ? (
             <Button
               sx={{
-                color: theme.palette.secondary.contrastText,
+                color: Globals.theme.palette.secondary.contrastText,
                 textTransform: "none",
                 display: "flex"
               }}
@@ -60,7 +59,7 @@ export default function ProductCard(props: { product: Product }) {
           )}
           <Button
             sx={{
-              color: theme.palette.secondary.contrastText,
+              color: Globals.theme.palette.secondary.contrastText,
               textTransform: "none",
               display: "flex"
             }}

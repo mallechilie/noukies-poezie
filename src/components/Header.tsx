@@ -25,7 +25,6 @@ export default async function Header(props: { sx?: SxProps; width: number; heigh
         height: props.height,
         maxWidth: props.width
       }}
-      style={{ filter: "grayscale(100%)" }}
     >
       <Typography variant="h1" sx={{ color: "white", width: 7 / 10 }}>
         {headerData?.title ?? "Nouks poezie"}
