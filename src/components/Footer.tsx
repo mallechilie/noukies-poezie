@@ -8,11 +8,13 @@ import TitleButton from "@/components/TitleButton";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
+import { useRouter } from "next/navigation";
 
-const pages = ["Algemene voorwaarden", "Privacy statement"];
+const pages = ["Contact"];
 
 export default function Footer(props: { sx?: SxProps<Theme> }) {
   const theme = useTheme();
+  const router = useRouter();
   return (
     <Box sx={{ ...props.sx, backgroundColor: theme.palette.primary.main }}>
       <ContentWidth>
@@ -41,6 +43,7 @@ export default function Footer(props: { sx?: SxProps<Theme> }) {
                     overflow: "hidden",
                     width: 1
                   }}
+                  onClick={() => router.push("/" + page.toLowerCase())}
                 >
                   {page}
                 </Button>
