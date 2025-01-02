@@ -5,7 +5,7 @@ import Product from "@/database/models/Product";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
-import Image from "next/image";
+import ImageCarousel from "@/components/carousel/ImageCarousel";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const product: Product | undefined = await getProductById(params.id);
@@ -16,26 +16,13 @@ export default async function Page({ params }: { params: { id: string } }) {
       </ContentWidth>
     );
 
-  const afbeelding = product.afbeeldingen[0];
   return (
     <ContentWidth>
-      <GridContainer>
-        <Grid size={{ xs: 12, md: 8 }}>
-          <Box
-            sx={{
-              // width: "100%",
-              backgroundColor: "red"
-            }}
-          >
-            <Image
-              src={afbeelding.link}
-              alt={""}
-              width={afbeelding.width}
-              height={afbeelding.height}
-            ></Image>
-          </Box>
+      <GridContainer sx={{ mt: 3 }}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <ImageCarousel product={product} />
         </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h2">{product.titel}</Typography>
           <Typography variant="body1">{product.omschrijving}</Typography>
           {!product.prijs ? (

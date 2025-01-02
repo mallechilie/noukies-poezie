@@ -16,7 +16,7 @@ export default function ProductCard(props: { product: Product }) {
             borderRadius: 1,
             aspectRatio: 350 / 240,
             width: "100%",
-            backgroundImage: `url(${props.product.afbeeldingen[0].link})`,
+            backgroundImage: `url(${props.product.afbeeldingen[0]})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             display: "flex",
