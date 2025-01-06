@@ -41,7 +41,7 @@ export default function Footer() {
                     overflow: "hidden",
                     width: 1
                   }}
-                  href={`\${page.toLowerCase()}`}
+                  href={`\\${page.toLowerCase()}`}
                 >
                   {page}
                 </Button>

@@ -10,7 +10,7 @@ export default async function Page() {
 
   return (
     <>
-      <Header title="Nouks Poëzie" height={400} width={1440} />
+      <Header height={400} width={1440} />
       <ContentWidth>
         {!page ? <CircularProgress sx={{ m: 3 }} /> : <MuiMarkdown>{page.inhoud}</MuiMarkdown>}
       </ContentWidth>
