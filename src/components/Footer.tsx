@@ -1,20 +1,20 @@
-"use client";
 import * as React from "react";
 
-import { Box, Divider, SxProps, Theme, useTheme } from "@mui/material";
+import { Divider } from "@mui/material";
 import Button from "@mui/material/Button";
 
 import TitleButton from "@/components/TitleButton";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
+import Globals from "@/globals";
+import Bar from "@/components/wrappers/Bar";
 
 const pages = ["Algemene voorwaarden", "Privacy statement"];
 
-export default function Footer(props: { sx?: SxProps<Theme> }) {
-  const theme = useTheme();
+export default function Footer() {
   return (
-    <Box sx={{ ...props.sx, backgroundColor: theme.palette.primary.main }}>
+    <Bar>
       <ContentWidth>
         <GridContainer>
           <GridItem>
@@ -26,7 +26,7 @@ export default function Footer(props: { sx?: SxProps<Theme> }) {
               orientation="vertical"
               variant="middle"
               flexItem
-              sx={{ bgcolor: theme.palette.primary.contrastText }}
+              sx={{ bgcolor: Globals.theme.palette.primary.contrastText }}
             />
 
             <div>
@@ -35,7 +35,7 @@ export default function Footer(props: { sx?: SxProps<Theme> }) {
                   key={page}
                   sx={{
                     textTransform: "none",
-                    color: theme.palette.primary.contrastText,
+                    color: Globals.theme.palette.primary.contrastText,
                     textAlign: "left",
                     justifyContent: "flex-start",
                     overflow: "hidden",
@@ -49,6 +49,6 @@ export default function Footer(props: { sx?: SxProps<Theme> }) {
           </GridItem>
         </GridContainer>
       </ContentWidth>
-    </Box>
+    </Bar>
   );
 }

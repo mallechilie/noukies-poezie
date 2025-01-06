@@ -1,13 +1,12 @@
 import * as React from "react";
 
-import AppBar from "@mui/material/AppBar";
-
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import TitleButton from "@/components/TitleButton";
+import Bar from "./wrappers/Bar";
 
 export default function Navbar() {
   return (
-    <AppBar sx={{ height: "80px", mb: "1px" }} position="static">
+    <Bar sx={{mb: "1px"}}>
       <ContentWidth
         sx={{
           display: "flex",
@@ -17,6 +16,6 @@ export default function Navbar() {
       >
         <TitleButton />
       </ContentWidth>
-    </AppBar>
+    </Bar>
   );
 }
