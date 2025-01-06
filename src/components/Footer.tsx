@@ -10,7 +10,7 @@ import GridItem from "@/components/wrappers/GridItem";
 import Globals from "@/globals";
 import Bar from "@/components/wrappers/Bar";
 
-const pages = ["Algemene voorwaarden", "Privacy statement"];
+const pages = ["Contact"];
 
 export default function Footer() {
   return (
@@ -41,6 +41,7 @@ export default function Footer() {
                     overflow: "hidden",
                     width: 1
                   }}
+                  href={`\${page.toLowerCase()}`}
                 >
                   {page}
                 </Button>
