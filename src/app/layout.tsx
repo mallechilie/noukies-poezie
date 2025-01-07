@@ -4,8 +4,6 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Box from "@mui/material/Box";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import theme from "@/theme";
-import { ThemeProvider } from "@mui/material/styles";
 
 export const metadata: Metadata = {
   title: "Nouks poëzie",
@@ -25,7 +23,7 @@ function Components({ children }: Readonly<{ children: React.ReactNode }>) {
     >
       <Navbar />
       <Box sx={{ flexGrow: 1 }}>{children}</Box>
-      <Footer sx={{ flexShrink: 0 }} />
+      <Footer />
     </Box>
   );
 }
@@ -35,9 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body style={{ margin: 0, padding: 0 }}>
         <link rel="icon" type="image/jpg" href="./favicon.ico" />
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Components>{children}</Components>
-          </ThemeProvider>
+          <Components>{children}</Components>
         </AppRouterCacheProvider>
       </body>
     </html>

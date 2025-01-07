@@ -9,7 +9,7 @@ export default function Page() {
   use(getDbInfo());
   return (
     <>
-      <Header title="Nouks Poëzie" height={400} width={1440} />
+      <Header height={400} width={1440} />
       <ContentWidth>
         <MuiMarkdown>
           {`##### De website is nog in constructie, je kan me bereiken op <nouks_poezie@outlook.com>`}
