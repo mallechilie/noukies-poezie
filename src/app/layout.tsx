@@ -13,19 +13,19 @@ export const metadata: Metadata = {
 
 function Components({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-      <Box
-        sx={{
-          margin: "auto",
-          maxWidth: "1440px",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column"
-        }}
-      >
-        <Navbar />
-        <Box sx={{ flexGrow: 1 }}>{children}</Box>
-        <Footer />
-      </Box>
+    <Box
+      sx={{
+        margin: "auto",
+        maxWidth: "1440px",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column"
+      }}
+    >
+      <Navbar />
+      <Box sx={{ flexGrow: 1 }}>{children}</Box>
+      <Footer />
+    </Box>
   );
 }
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

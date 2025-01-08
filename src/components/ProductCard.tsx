@@ -1,7 +1,6 @@
 import { Box, Button, Card, CardContent, Link, Typography } from "@mui/material";
 import Product from "@/database/models/Product";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import Tag from "@/components/Tag";
 import Globals from "@/globals";
 import Counter from "@/components/basket/Counter";

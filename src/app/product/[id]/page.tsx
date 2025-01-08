@@ -2,9 +2,8 @@ import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import getProductById from "@/database/api/product/getProductById";
 import Product from "@/database/models/Product";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 import PriceTag from "@/components/PriceTag";
 
