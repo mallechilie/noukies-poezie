@@ -16,7 +16,7 @@ export default function ImageCarousel(props: { product: Product }) {
   return (
     <>
       <ImageBox alt={props.product.titel} src={getAfbeelding()} />
-      {images.length > 1 ? (
+      {images.length > 1 && (
         <Grid container spacing={3} sx={{ my: 2 }}>
           {images.map((image, i) => (
             <Grid size={3} key={i}>
@@ -33,8 +33,6 @@ export default function ImageCarousel(props: { product: Product }) {
             </Grid>
           ))}
         </Grid>
-      ) : (
-        <></>
       )}
     </>
   );

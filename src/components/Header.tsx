@@ -1,4 +1,4 @@
-import getComponentByName from "@/database/api/getComponentByName";
+import getComponentByName from "@/database/api/component/getComponentByName";
 import ComponentData from "@/database/models/Component";
 import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
