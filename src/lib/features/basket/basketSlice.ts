@@ -9,7 +9,7 @@ export const basketSlice = createSlice({
   name: "basket",
   initialState: {
     products,
-    total: 200
+    total: 0
   },
   reducers: {
     addProduct: (state, action) => {

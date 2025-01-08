@@ -6,6 +6,7 @@ import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
+import PriceTag from "@/components/PriceTag";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const product: Product | undefined = await getProductById(params.id);
@@ -27,10 +28,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Typography variant="body1">{product.omschrijving}</Typography>
           {product.prijs && (
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button sx={{ color: "black", textTransform: "none", display: "flex" }}>
-                <EuroSymbolIcon fontSize="small" />
-                <Typography>{product.prijs}</Typography>
-              </Button>
+              <PriceTag price={product.prijs} />
             </Box>
           )}
         </Grid>

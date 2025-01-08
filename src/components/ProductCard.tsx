@@ -5,6 +5,8 @@ import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import Tag from "@/components/Tag";
 import Globals from "@/globals";
 import Counter from "@/components/basket/Counter";
+import AddProductButton from "./basket/AddProductButton";
+import PriceTag from "./PriceTag";
 
 export default function ProductCard(props: { product: Product }) {
   return (
@@ -49,19 +51,8 @@ export default function ProductCard(props: { product: Product }) {
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          {props.product.prijs ? (
-            <Button
-              sx={{
-                color: Globals.theme.palette.primary.contrastText,
-                textTransform: "none"
-              }}
-            >
-              <EuroSymbolIcon fontSize="small" />
-              <Typography>{props.product.prijs}</Typography>
-            </Button>
-          ) : (
-            <Box></Box>
-          )}
+          {props.product.prijs ? <PriceTag price={props.product.prijs} /> : <Box></Box>}
+          {props.product.prijs ? <AddProductButton product={props.product} /> : <Box></Box>}
           <Button
             sx={{
               color: Globals.theme.palette.primary.contrastText,
