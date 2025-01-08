@@ -8,7 +8,7 @@ import Counter from "@/components/basket/Counter";
 
 export default function ProductCard(props: { product: Product }) {
   return (
-    <Card sx={{ backgroundColor: Globals.theme.palette.secondary.main }}>
+    <Card sx={{ backgroundColor: Globals.theme.palette.secondary.light }}>
       <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
         <Box
           component={Link}
@@ -23,7 +23,10 @@ export default function ProductCard(props: { product: Product }) {
             position: "relative"
           }}
         >
-          <Counter product={props.product._id?.toString() ?? ""} sx={{ position: "absolute", right: 0 }} />
+          <Counter
+            product={props.product._id?.toString() ?? ""}
+            sx={{ position: "absolute", right: 0 }}
+          />
           {props.product.productType && (
             <Tag tag={props.product.productType} sx={{ position: "absolute", bottom: 0 }} />
           )}
@@ -49,7 +52,7 @@ export default function ProductCard(props: { product: Product }) {
           {props.product.prijs ? (
             <Button
               sx={{
-                color: Globals.theme.palette.secondary.contrastText,
+                color: Globals.theme.palette.primary.contrastText,
                 textTransform: "none"
               }}
             >
@@ -61,7 +64,7 @@ export default function ProductCard(props: { product: Product }) {
           )}
           <Button
             sx={{
-              color: Globals.theme.palette.secondary.contrastText,
+              color: Globals.theme.palette.primary.contrastText,
               textTransform: "none"
             }}
             component={Link}

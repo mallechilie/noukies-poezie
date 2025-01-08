@@ -6,15 +6,16 @@ import Globals from "@/globals";
 import { Paper, SxProps } from "@mui/material";
 import { useAppSelector } from "@/lib/hooks";
 
-export default function Counter(props: { sx?: SxProps; product: string }) {
+export default function Counter(props: { sx?: SxProps; product?: string }) {
   const basket = useAppSelector((state) => state.basket);
-  console.log("basket:", basket.products);
+
+  const count = props.product ? basket.products[props.product] : basket.total;
+  console.log("basket:", basket);
 
   return (
-    basket.products[props.product] && (
+    !!count && (
       <Paper
         sx={{
-          ...props.sx,
           minWidth: "1em",
           width: "fit-content",
           height: "fit-content",
@@ -23,12 +24,13 @@ export default function Counter(props: { sx?: SxProps; product: string }) {
           m: "5px",
           p: "4px",
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
+          ...props.sx
         }}
         elevation={3}
       >
-        <Typography variant="body1" sx={{ color: "black" }}>
-          {basket.products[props.product]}
+        <Typography variant="body1" >
+          {count}
         </Typography>
       </Paper>
     )
