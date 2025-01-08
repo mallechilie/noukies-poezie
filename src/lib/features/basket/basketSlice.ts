@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const products: { [key: string]: number } = {
-  ["2"]: 12
-};
+const products: { [key: string]: number } = {};
 
 export const basketSlice = createSlice({
   name: "basket",

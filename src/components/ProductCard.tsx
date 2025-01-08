@@ -4,6 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
 import Tag from "@/components/Tag";
 import Globals from "@/globals";
+import Counter from "@/components/basket/Counter";
 
 export default function ProductCard(props: { product: Product }) {
   return (
@@ -13,17 +14,19 @@ export default function ProductCard(props: { product: Product }) {
           component={Link}
           href={`/product/${props.product._id}`}
           sx={{
-            borderRadius: 1,
             aspectRatio: 350 / 240,
-            width: "100%",
+            width: 1,
             backgroundImage: `url(${props.product.afbeeldingen[0]})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
-            display: "flex",
-            alignItems: "flex-end"
+            display: "block",
+            position: "relative"
           }}
         >
-          {props.product.productType ? <Tag productType={props.product.productType} /> : <></>}
+          <Counter product={props.product._id?.toString() ?? ""} sx={{ position: "absolute", right: 0 }} />
+          {props.product.productType && (
+            <Tag tag={props.product.productType} sx={{ position: "absolute", bottom: 0 }} />
+          )}
         </Box>
 
         <Typography variant="h5" component="div">
@@ -47,8 +50,7 @@ export default function ProductCard(props: { product: Product }) {
             <Button
               sx={{
                 color: Globals.theme.palette.secondary.contrastText,
-                textTransform: "none",
-                display: "flex"
+                textTransform: "none"
               }}
             >
               <EuroSymbolIcon fontSize="small" />
@@ -60,8 +62,7 @@ export default function ProductCard(props: { product: Product }) {
           <Button
             sx={{
               color: Globals.theme.palette.secondary.contrastText,
-              textTransform: "none",
-              display: "flex"
+              textTransform: "none"
             }}
             component={Link}
             href={`/product/${props.product._id}`}
