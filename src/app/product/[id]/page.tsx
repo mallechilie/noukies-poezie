@@ -1,14 +1,15 @@
+import ImageCarousel from "@/components/carousel/ImageCarousel";
+import PriceTag from "@/components/PriceTag";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import getProductById from "@/database/api/product/getProductById";
 import Product from "@/database/models/Product";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import ImageCarousel from "@/components/carousel/ImageCarousel";
-import PriceTag from "@/components/PriceTag";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const product: Product | undefined = await getProductById(params.id);
+  const { id } = await params;
+  const product: Product | undefined = await getProductById(id);
   if (!product)
     return (
       <ContentWidth>

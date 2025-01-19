@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
+import StoreProvider from "@/app/StoreProvider";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Box from "@mui/material/Box";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import StoreProvider from "@/app/StoreProvider";
 
 export const metadata: Metadata = {
   title: "Nouks poëzie",
-  description: "By Michiel Doorn"
+  description: "By Michiel Doorn",
 };
 
 function Components({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -19,7 +19,7 @@ function Components({ children }: Readonly<{ children: React.ReactNode }>) {
         maxWidth: "1440px",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <Navbar />

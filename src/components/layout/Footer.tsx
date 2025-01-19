@@ -1,14 +1,12 @@
-import * as React from "react";
-
 import { Divider } from "@mui/material";
 import Button from "@mui/material/Button";
 
-import TitleButton from "@/components/TitleButton";
+import TitleButton from "@/components/layout/TitleButton";
+import Bar from "@/components/wrappers/Bar";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
 import Globals from "@/globals";
-import Bar from "@/components/wrappers/Bar";
 
 const pages = ["Contact"];
 
@@ -39,7 +37,7 @@ export default function Footer() {
                     textAlign: "left",
                     justifyContent: "flex-start",
                     overflow: "hidden",
-                    width: 1
+                    width: 1,
                   }}
                   href={`\\${page.toLowerCase()}`}
                 >

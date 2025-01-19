@@ -1,9 +1,7 @@
-import * as React from "react";
-
-import ContentWidth from "@/components/wrappers/ContentWidth";
-import TitleButton from "@/components/TitleButton";
-import Bar from "./wrappers/Bar";
 import BasketButton from "@/components/basket/BasketButton";
+import TitleButton from "@/components/layout/TitleButton";
+import Bar from "@/components/wrappers/Bar";
+import ContentWidth from "@/components/wrappers/ContentWidth";
 
 export default function Navbar() {
   return (
@@ -12,7 +10,7 @@ export default function Navbar() {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <TitleButton />

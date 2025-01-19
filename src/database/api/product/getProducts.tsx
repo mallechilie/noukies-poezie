@@ -1,5 +1,5 @@
 import client from "@/database/connection/mongodbClient";
-import Product from "../../models/Product";
+import Product from "@/database/models/Product";
 
 export default async function getProducts(amount = 10): Promise<Product[]> {
   try {

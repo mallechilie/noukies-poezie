@@ -1,15 +1,17 @@
 "use client";
-import * as React from "react";
 
-import Typography from "@mui/material/Typography";
+import Product from "@/database/models/Product";
 import Globals from "@/globals";
-import { Paper, SxProps } from "@mui/material";
 import { useAppSelector } from "@/lib/hooks";
+import { Paper, SxProps } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
-export default function Counter(props: { sx?: SxProps; product?: string }) {
+export default function Counter(props: { sx?: SxProps; product?: Product }) {
   const basket = useAppSelector((state) => state.basket);
 
-  const count = props.product ? basket.products[props.product] : basket.total;
+  const count = props.product?._id
+    ? basket.products.find((item) => item.product._id == props.product?._id)?.count
+    : basket.total;
   console.log("basket:", basket);
 
   return (
@@ -25,13 +27,11 @@ export default function Counter(props: { sx?: SxProps; product?: string }) {
           p: "4px",
           display: "flex",
           justifyContent: "center",
-          ...props.sx
+          ...props.sx,
         }}
         elevation={3}
       >
-        <Typography variant="body1" >
-          {count}
-        </Typography>
+        <Typography variant="body1">{count}</Typography>
       </Paper>
     )
   );

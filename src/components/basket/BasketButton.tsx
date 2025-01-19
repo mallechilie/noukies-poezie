@@ -1,11 +1,9 @@
-import * as React from "react";
-
 import Link from "next/link";
 
+import Counter from "@/components/basket/Counter";
 import Globals from "@/globals";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Box, IconButton } from "@mui/material";
-import Counter from "./Counter";
 
 export default function BasketButton() {
   return (
@@ -14,7 +12,7 @@ export default function BasketButton() {
         component={Link}
         href="/winkelmandje"
         sx={{
-          color: Globals.theme.palette.primary.contrastText
+          color: Globals.theme.palette.primary.contrastText,
         }}
       >
         <ShoppingCartIcon />
@@ -27,7 +25,7 @@ export default function BasketButton() {
           m: 0,
           p: 0,
           backgroundColor: Globals.theme.palette.secondary.main,
-          color: Globals.theme.palette.secondary.contrastText
+          color: Globals.theme.palette.secondary.contrastText,
         }}
       />
     </Box>

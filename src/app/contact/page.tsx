@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import getPageByName from "@/database/api/page/getPageByName";
 import MyPage from "@/database/models/MyPage";

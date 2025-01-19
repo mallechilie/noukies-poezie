@@ -1,36 +1,28 @@
+import { basketReducer } from "@/lib/features/basket/basketSlice";
+import storage from "@/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
-import basketSlice from "@/lib/features/basket/basketSlice";
 import { combineReducers } from "redux";
-import storage from "redux-persist/lib/storage"; 
 import { persistReducer, persistStore } from "redux-persist";
 
-const persistConfig = {
+const basketPersistConfig = {
   key: "persist",
-  storage
+  storage,
+  whitelist: ["products", "total"],
 };
 
 const rootReducer = combineReducers({
-  basket: basketSlice
+  basket: persistReducer(basketPersistConfig, basketReducer),
 });
 
-const makeConfiguredStore = () =>
-  configureStore({
-    reducer: rootReducer,
-  })
-
-
 export const makeStore = () => {
-  const isServer = typeof window === "undefined";
-  if (isServer) {
-    return makeConfiguredStore();
-  } else {
-    const persistedReducer = persistReducer(persistConfig, rootReducer);
-    const store: any = configureStore({
-      reducer: persistedReducer
-    });
-    store.__persistor = persistStore(store);
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+  });
+  if (typeof window === "undefined") {
     return store;
   }
+  return { ...store, __persistor: persistStore(store) };
 };
 
 // Infer the type of makeStore

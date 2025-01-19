@@ -1,47 +1,52 @@
+import Product from "@/database/models/Product";
 import { createSlice } from "@reduxjs/toolkit";
 
-const products: { [key: string]: number } = {};
-function sumDict(dict: { [key: string]: number }) {
-  return Object.values(dict).reduce((acc, value) => acc + value, 0);
+export interface IBasketState {
+  products: { product: Product; count: number }[];
+  total: number;
 }
+
+const initialState: IBasketState = {
+  products: [],
+  total: 0,
+};
 
 export const basketSlice = createSlice({
   name: "basket",
-  initialState: {
-    products,
-    total: 0
-  },
+  initialState: initialState,
   reducers: {
     addProduct: (state, action) => {
-      const id = action.payload;
-      if (!state.products[id]) {
-        state.products[id] = 1;
+      const product = action.payload;
+      if (!state.products.find((obj) => obj.product._id == product._id)) {
+        state.products.push({ product, count: 1 });
       } else {
-        state.products[id]++;
+        const index = state.products.map((e) => e.product._id).indexOf(product._id);
+        state.products[index] = { product, count: state.products[index].count + 1 };
       }
-      state.total = sumDict(state.products);
+      state.total = state.products.reduce((sum, item) => sum + item.count, 0);
     },
     removeProduct: (state, action) => {
-      const id = action.payload;
-      if (!state.products[id]) {
-      } else if (state.products[id] == 0) {
-        delete state.products[id];
+      const product = action.payload;
+      if (!state.products.find((obj) => obj.product._id == product._id)) {
+        throw new Error(`Product not found in state: ${product.titel}`);
       } else {
-        state.products[id]--;
+        const index = state.products.map((e) => e.product._id).indexOf(product._id);
+        state.products[index] = { product, count: state.products[index].count - 1 };
       }
-      state.total = sumDict(state.products);
+      state.total = state.products.reduce((sum, item) => sum + item.count, 0);
     },
-    removeProductFully: (state, action) => {
-      const id = action.payload;
-      if (!state.products[id]) {
+    deleteProduct: (state, action) => {
+      const product = action.payload;
+      if (!state.products.find((obj) => obj.product._id == product._id)) {
+        throw new Error(`Product not found in state: ${product.titel}`);
       } else {
-        delete state.products[id];
+        const index = state.products.map((e) => e.product._id).indexOf(product._id);
+        state.products.splice(index, 1);
       }
-      state.total = sumDict(state.products);
-    }
-  }
+      state.total = state.products.reduce((sum, item) => sum + item.count, 0);
+    },
+  },
 });
 
-export const { addProduct, removeProduct, removeProductFully } = basketSlice.actions;
-
-export default basketSlice.reducer;
+export const { addProduct, removeProduct, deleteProduct } = basketSlice.actions;
+export const basketReducer = basketSlice.reducer;
