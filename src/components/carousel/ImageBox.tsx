@@ -1,6 +1,6 @@
+import Globals from "@/globals";
 import { Paper } from "@mui/material";
 import Image from "next/image";
-import Globals from "@/globals";
 import { ComponentProps } from "react";
 
 interface ImageBoxProps extends ComponentProps<typeof Paper> {
@@ -19,7 +19,7 @@ export default function ImageBox({ src, alt, color, ...props }: ImageBoxProps) {
         aspectRatio: 1,
         display: "flex",
         justifyContent: "center",
-        alignContent: "center"
+        alignContent: "center",
       }}
     >
       <Image
@@ -32,7 +32,7 @@ export default function ImageBox({ src, alt, color, ...props }: ImageBoxProps) {
           width: "90%",
           height: "90%",
           objectFit: "contain",
-          margin: "auto"
+          margin: "auto",
         }}
       />
     </Paper>
