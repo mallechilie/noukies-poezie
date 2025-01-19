@@ -13,7 +13,12 @@ export default function Basket() {
         <BasketItem product={product} count={count} key={product._id?.toString()} />
       ))}
       <Delivery delivery={5} />
-      <Total total={500} />
+      <Total
+        total={basket.products.reduce(
+          (sum, item) => sum + item.count * (item.product.prijs ?? 0),
+          5
+        )}
+      />
     </>
   );
 }

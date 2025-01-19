@@ -18,7 +18,7 @@ export default function Counter(props: { sx?: SxProps; product?: Product }) {
     !!count && (
       <Paper
         sx={{
-          minWidth: "1em",
+          minWidth: "1rem",
           width: "fit-content",
           height: "fit-content",
           borderRadius: "50%",

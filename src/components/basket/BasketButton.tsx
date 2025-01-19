@@ -16,18 +16,18 @@ export default function BasketButton() {
         }}
       >
         <ShoppingCartIcon />
+        <Counter
+          sx={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            m: 0,
+            p: 0,
+            backgroundColor: Globals.theme.palette.secondary.main,
+            color: Globals.theme.palette.secondary.contrastText,
+          }}
+        />
       </IconButton>
-      <Counter
-        sx={{
-          position: "absolute",
-          right: 0,
-          top: 0,
-          m: 0,
-          p: 0,
-          backgroundColor: Globals.theme.palette.secondary.main,
-          color: Globals.theme.palette.secondary.contrastText,
-        }}
-      />
     </Box>
   );
 }

@@ -21,20 +21,27 @@ export const basketSlice = createSlice({
         state.products.push({ product, count: 1 });
       } else {
         const index = state.products.map((e) => e.product._id).indexOf(product._id);
-        state.products[index] = { product, count: state.products[index].count + 1 };
+        const count = state.products[index].count;
+        state.products[index] = { product, count: count + 1 };
       }
       state.total = state.products.reduce((sum, item) => sum + item.count, 0);
     },
+
     removeProduct: (state, action) => {
       const product = action.payload;
       if (!state.products.find((obj) => obj.product._id == product._id)) {
         throw new Error(`Product not found in state: ${product.titel}`);
+      }
+      const index = state.products.map((e) => e.product._id).indexOf(product._id);
+      const count = state.products[index].count;
+      if (count <= 1) {
+        state.products.splice(index, 1);
       } else {
-        const index = state.products.map((e) => e.product._id).indexOf(product._id);
-        state.products[index] = { product, count: state.products[index].count - 1 };
+        state.products[index] = { product, count: count - 1 };
       }
       state.total = state.products.reduce((sum, item) => sum + item.count, 0);
     },
+
     deleteProduct: (state, action) => {
       const product = action.payload;
       if (!state.products.find((obj) => obj.product._id == product._id)) {
