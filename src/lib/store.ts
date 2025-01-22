@@ -2,7 +2,7 @@ import { basketReducer } from "@/lib/features/basket/basketSlice";
 import storage from "@/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { persistReducer, persistStore } from "redux-persist";
+import { persistReducer } from "redux-persist";
 
 const basketPersistConfig = {
   key: "persist",
@@ -22,7 +22,7 @@ export const makeStore = () => {
   if (typeof window === "undefined") {
     return store;
   }
-  return { ...store, __persistor: persistStore(store) };
+  return store;
 };
 
 // Infer the type of makeStore

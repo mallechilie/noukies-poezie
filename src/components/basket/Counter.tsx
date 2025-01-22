@@ -12,7 +12,6 @@ export default function Counter(props: { sx?: SxProps; product?: Product }) {
   const count = props.product?._id
     ? basket.products.find((item) => item.product._id == props.product?._id)?.count
     : basket.total;
-  console.log("basket:", basket);
 
   return (
     !!count && (
