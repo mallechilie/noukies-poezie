@@ -1,5 +1,5 @@
 import { CircularProgress, Typography } from "@mui/material";
-import getProducts from "@/database/api/getProducts";
+import getProducts from "@/database/api/product/getProducts";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
 import ProductCard from "@/components/ProductCard";

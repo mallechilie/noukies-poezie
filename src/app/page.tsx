@@ -1,7 +1,7 @@
-import Header from "@/components/Header";
-import ProductList from "@/components/dbTesters/ProductList";
+import Header from "@/components/layout/Header";
+import ProductList from "@/components/ProductList";
 import ContentWidth from "@/components/wrappers/ContentWidth";
-import { getDbInfo } from "@/database/api/getDbInfo";
+import { getDbInfo } from "@/database/api/debug/getDbInfo";
 import MuiMarkdown from "mui-markdown";
 import { use } from "react";
 

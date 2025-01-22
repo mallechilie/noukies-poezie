@@ -4,7 +4,7 @@ export async function getDbInfo() {
   const tested = {
     URI: false,
     database: false,
-    collections: { products: false, components: false }
+    collections: { products: false, components: false, pages: false }
   };
   try {
     const mongoClient = await client.connect();
@@ -26,6 +26,12 @@ export async function getDbInfo() {
       .find()
       .toArray();
     tested.collections.components = components.length > 0;
+
+    const pages = await db
+      .collection(process.env.COL_PAGES ?? "")
+      .find()
+      .toArray();
+    tested.collections.pages = pages.length > 0;
   } catch (e) {
     console.error(e);
   }

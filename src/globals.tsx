@@ -11,7 +11,8 @@ export default abstract class Globals {
         light: "#f6f6c8"
       },
       secondary: {
-        main: "#e7eafa"
+        main: "#6e88e5",
+        light: "#e7eafa"
       }
     }
   });

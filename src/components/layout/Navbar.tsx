@@ -1,20 +1,20 @@
-import * as React from "react";
-
+import BasketButton from "@/components/basket/BasketButton";
+import TitleButton from "@/components/layout/TitleButton";
+import Bar from "@/components/wrappers/Bar";
 import ContentWidth from "@/components/wrappers/ContentWidth";
-import TitleButton from "@/components/TitleButton";
-import Bar from "./wrappers/Bar";
 
 export default function Navbar() {
   return (
-    <Bar sx={{mb: "1px"}}>
+    <Bar sx={{ mb: "1px" }}>
       <ContentWidth
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <TitleButton />
+        <BasketButton />
       </ContentWidth>
     </Bar>
   );

@@ -1,14 +1,17 @@
+import AddToBasketButton from "@/components/basket/AddToBasketButton";
+import Counter from "@/components/basket/Counter";
+import ImageCarousel from "@/components/carousel/ImageCarousel";
+import PriceTag from "@/components/PriceTag";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
-import getProductById from "@/database/api/getProductById";
+import getProductById from "@/database/api/product/getProductById";
 import Product from "@/database/models/Product";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import EuroSymbolIcon from "@mui/icons-material/EuroSymbol";
-import ImageCarousel from "@/components/carousel/ImageCarousel";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const product: Product | undefined = await getProductById(params.id);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const product: Product | undefined = await getProductById(id);
   if (!product)
     return (
       <ContentWidth>
@@ -25,14 +28,13 @@ export default async function Page({ params }: { params: { id: string } }) {
         <Grid size={{ xs: 12, md: 6 }}>
           <Typography variant="h2">{product.titel}</Typography>
           <Typography variant="body1">{product.omschrijving}</Typography>
-          {!product.prijs ? (
-            <></>
-          ) : (
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button sx={{ color: "black", textTransform: "none", display: "flex" }}>
-                <EuroSymbolIcon fontSize="small" />
-                <Typography>{product.prijs}</Typography>
-              </Button>
+          {product.prijs && (
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <PriceTag price={product.prijs} />
+              <AddToBasketButton product={product} />
+              <Box>
+                <Counter product={product} />
+              </Box>
             </Box>
           )}
         </Grid>
