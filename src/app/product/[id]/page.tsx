@@ -1,3 +1,5 @@
+import AddToBasketButton from "@/components/basket/AddToBasketButton";
+import Counter from "@/components/basket/Counter";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 import PriceTag from "@/components/PriceTag";
 import ContentWidth from "@/components/wrappers/ContentWidth";
@@ -27,8 +29,12 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Typography variant="h2">{product.titel}</Typography>
           <Typography variant="body1">{product.omschrijving}</Typography>
           {product.prijs && (
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <PriceTag price={product.prijs} />
+              <AddToBasketButton product={product} />
+              <Box>
+                <Counter product={product} />
+              </Box>
             </Box>
           )}
         </Grid>
