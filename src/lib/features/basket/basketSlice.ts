@@ -17,6 +17,9 @@ export const basketSlice = createSlice({
   reducers: {
     addProduct: (state, action) => {
       const product = action.payload;
+      if (!product._id) {
+        return;
+      }
       if (!state.products.find((obj) => obj.product._id == product._id)) {
         state.products.push({ product, count: 1 });
       } else {

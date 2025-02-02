@@ -23,6 +23,7 @@ export default function ImageBox({ src, alt, color, ...props }: ImageBoxProps) {
       }}
     >
       <Image
+        priority={true}
         src={src}
         alt={alt}
         width={0}
