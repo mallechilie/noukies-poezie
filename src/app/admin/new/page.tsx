@@ -5,21 +5,18 @@ import PriceTag from "@/components/PriceTag";
 import ContentWidth from "@/components/wrappers/ContentWidth";
 import GridContainer from "@/components/wrappers/GridContainer";
 import Globals from "@/globals";
+import { updateProduct } from "@/lib/features/newProduct/newProductSlice";
 import PreviewIcon from "@mui/icons-material/Preview";
 import { Box, Fab, TextField, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import PriceInput from "./PriceInput";
+import { useAppSelector } from "@/lib/hooks";
 
 export default function Page() {
-  const [product, setProduct] = useState({
-    titel: "",
-    omschrijving: "",
-    afbeeldingen: [],
-    categorie: "",
-    productType: "",
-    prijs: 0,
-  });
+  const dispatch = useDispatch();
+  const { product } = useAppSelector((state) => state.newProduct);
 
   const [preview, setPreview] = useState(false);
 
@@ -55,7 +52,7 @@ export default function Page() {
                   },
                 }}
                 value={product.titel}
-                onChange={(e) => setProduct({ ...product, titel: e.target.value })}
+                onChange={(e) => dispatch(updateProduct({ titel: e.target.value }))}
               />
               <TextField
                 id="omschrijving"
@@ -64,11 +61,11 @@ export default function Page() {
                 rows={6}
                 variant="standard"
                 value={product.omschrijving}
-                onChange={(e) => setProduct({ ...product, omschrijving: e.target.value })}
+                onChange={(e) => dispatch(updateProduct({ omschrijving: e.target.value }))}
               />
               <PriceInput
                 value={product.prijs.toString()}
-                onChange={(e) => setProduct({ ...product, prijs: parseFloat(e.target.value) })}
+                onChange={(e) => dispatch(updateProduct({ prijs: parseFloat(e.target.value) }))}
               />
             </>
           )}

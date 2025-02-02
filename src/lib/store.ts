@@ -3,15 +3,17 @@ import storage from "@/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
+import { newProductReducer } from "./features/newProduct/newProductSlice";
 
-const basketPersistConfig = {
+const persistConfig = {
   key: "persist",
   storage,
-  whitelist: ["products", "total"],
+  whitelist: ["products", "total", "product"],
 };
 
 const rootReducer = combineReducers({
-  basket: persistReducer(basketPersistConfig, basketReducer),
+  basket: persistReducer(persistConfig, basketReducer),
+  newProduct: persistReducer(persistConfig, newProductReducer),
 });
 
 export const makeStore = () => {
