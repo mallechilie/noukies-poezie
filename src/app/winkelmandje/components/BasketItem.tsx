@@ -1,12 +1,12 @@
-import RowTemplate from "@/app/winkelmandje/content/RowTemplate";
+import AddButton from "@/app/winkelmandje/components/buttons/AddButton";
+import DeleteButton from "@/app/winkelmandje/components/buttons/DeleteButton";
+import RemoveButton from "@/app/winkelmandje/components/buttons/RemoveButton";
+import RowTemplate from "@/app/winkelmandje/components/RowTemplate";
 import ImageBox from "@/components/carousel/ImageBox";
 import PriceTag from "@/components/PriceTag";
 import TextButton from "@/components/TextButton";
 import Product from "@/database/models/Product";
 import { Typography } from "@mui/material";
-import AddButton from "./buttons/AddButton";
-import DeleteButton from "./buttons/DeleteButton";
-import RemoveButton from "./buttons/RemoveButton";
 
 export default function BasketItem(props: { product: Product; count: number }) {
   return !props.product.prijs ? (

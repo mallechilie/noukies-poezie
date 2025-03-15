@@ -1,8 +1,8 @@
-import { CircularProgress, Typography } from "@mui/material";
-import getProducts from "@/database/api/product/getProducts";
+import ProductCard from "@/components/ProductCard";
 import GridContainer from "@/components/wrappers/GridContainer";
 import GridItem from "@/components/wrappers/GridItem";
-import ProductCard from "@/components/ProductCard";
+import getProducts from "@/database/api/product/getProducts";
+import { CircularProgress, Typography } from "@mui/material";
 
 export default async function ProductList() {
   const products = await getProducts();
@@ -10,11 +10,7 @@ export default async function ProductList() {
     return <CircularProgress />;
   }
   if (products.length == 0) {
-    return (
-      <>
-        <Typography>No products found</Typography>
-      </>
-    );
+    return <Typography>No products found</Typography>;
   }
   return (
     <GridContainer sx={{ my: 4 }}>

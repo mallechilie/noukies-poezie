@@ -1,6 +1,6 @@
 import PriceTag from "@/components/PriceTag";
 import { Typography } from "@mui/material";
-import RowTemplate from "./RowTemplate";
+import RowTemplate from "@/app/winkelmandje/components/RowTemplate";
 
 export default function Total(props: { total: number }) {
   return (
